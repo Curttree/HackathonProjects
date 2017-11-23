@@ -172,6 +172,7 @@
     <None Include="Assets\PublicAssets\JMO Assets\Toony Colors\Shaders 2.0\Rim Alpha.shader" />
     <None Include="Assets\PublicAssets\JMO Assets\Toony Colors\Shaders 2.0\Rim Lighting.shader" />
     <None Include="Assets\PublicAssets\JMO Assets\Toony Colors\Shaders 2.0\Rim Outline.shader" />
+    <None Include="Assets\laxer tree pkg\README.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="GenerateTargetFrameworkMonikerAttribute" />

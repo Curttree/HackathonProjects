@@ -1,21 +1,22 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using static EnemyStates;
 
 public class EnemyController : MonoBehaviour {
     public EnemyState state;
     public float movementSpeed;
     public float health=10;
-    private GameObject player;
+    public float minDistance = 2.5f;
+    [SerializeField] private GameObject player;
     private GameObject lightbulb;
+    private ScoreController gameLogic;
     private float radius=5f;
     private float damageScale=0.1f;
 
     // Use this for initialization
     void Start () {
-        player = GameObject.FindGameObjectWithTag("Player");
-        lightbulb = GameObject.FindGameObjectWithTag("Light");
+        player = GameObject.Find("Player");
+        lightbulb = GameObject.Find("Point light");
+        gameLogic = GameObject.Find("GameLogic").GetComponent<ScoreController>();
         transform.LookAt(player.transform);
         transform.eulerAngles = new Vector3(0, transform.eulerAngles.y, 0);
     }
@@ -24,7 +25,7 @@ public class EnemyController : MonoBehaviour {
 	void Update () {
         DetermineState();
         DamageCalculation();
-	}
+    }
 
     void DetermineState()
     {
@@ -55,7 +56,17 @@ public class EnemyController : MonoBehaviour {
         }
         if (health <= 0)
         {
+            if (state != EnemyState.Die)
+            {
+                gameLogic.UpdateScore(100);
+            }    
             state = EnemyState.Die;
+            Debug.Log(state.ToString());
+        }
+        if (dist <= minDistance && state != EnemyState.Die)
+        {
+            state = EnemyState.Attack;
+            Debug.Log(state.ToString());
         }
     }
 
@@ -66,7 +77,9 @@ public class EnemyController : MonoBehaviour {
 
     void Attack()
     {
-
+        gameLogic.UpdateScore(-500);
+        state = EnemyState.Die;
+        Debug.Log(state.ToString());
     }
 
     float GetDistance(GameObject other)

@@ -46,7 +46,6 @@ public class LightController : MonoBehaviour {
             //Deteriorate the gain. Will need to implement better approach to handle non cycling head movement
             gain = gain * deteriorationPercent;
         }
-        Debug.Log(gain);
         previousPosition= camera.transform.forward;
     }
 }
