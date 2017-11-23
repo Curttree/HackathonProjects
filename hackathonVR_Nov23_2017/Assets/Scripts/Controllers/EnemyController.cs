@@ -14,6 +14,8 @@ public class EnemyController : MonoBehaviour {
     // Use this for initialization
     void Start () {
         player = GameObject.FindGameObjectWithTag("Player");
+        transform.LookAt(player.transform);
+        transform.eulerAngles = new Vector3(0, transform.eulerAngles.y, 0);
     }
 	
 	// Update is called once per frame
@@ -27,7 +29,7 @@ public class EnemyController : MonoBehaviour {
         switch (state)
         {
             case EnemyState.Move:
-                transform.position -= transform.forward * Time.deltaTime * movementSpeed;
+                transform.position += transform.forward * Time.deltaTime * movementSpeed;
                 break;
             case EnemyState.Die:
                 Kill();

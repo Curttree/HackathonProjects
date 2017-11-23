@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class EnemySpawnControl : MonoBehaviour {
     private List<GameObject> spawners = new List<GameObject>();
-	// Use this for initialization
-	void Start () {
+    public float spawnFrequency;
+    private float timeSinceSpawn = 0;
+    // Use this for initialization
+    void Start () {
 		foreach (Transform child in transform)
         {
             spawners.Add(child.gameObject);
@@ -14,7 +16,13 @@ public class EnemySpawnControl : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (Input.GetKeyDown("space"))
-            spawners[0].GetComponent<SpawnControl>().SpawnEnemy();
+        timeSinceSpawn += Time.deltaTime;
+        if (timeSinceSpawn>=spawnFrequency)
+        {
+            int activeSpawner = Random.Range(0, spawners.Count);
+            spawners[activeSpawner].GetComponent<SpawnControl>().SpawnEnemy();
+            timeSinceSpawn = 0;
+        }
+            
 	}
 }
