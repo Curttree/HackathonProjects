@@ -8,12 +8,14 @@ public class EnemyController : MonoBehaviour {
     public float movementSpeed;
     public float health=10;
     private GameObject player;
-    private float radius=200;
+    private GameObject lightbulb;
+    private float radius=5f;
     private float damageScale=0.1f;
 
     // Use this for initialization
     void Start () {
         player = GameObject.FindGameObjectWithTag("Player");
+        lightbulb = GameObject.FindGameObjectWithTag("Light");
         transform.LookAt(player.transform);
         transform.eulerAngles = new Vector3(0, transform.eulerAngles.y, 0);
     }
@@ -45,7 +47,8 @@ public class EnemyController : MonoBehaviour {
 
     void DamageCalculation()
     {
-        float dist = GetDistance(player);
+        float dist = GetDistance(lightbulb);
+        radius = lightbulb.GetComponent<Light>().range;
         if (dist < radius)
         {
             health -= damageScale;

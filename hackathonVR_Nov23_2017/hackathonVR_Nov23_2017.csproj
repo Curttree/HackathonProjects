@@ -184,6 +184,7 @@
     <Compile Include="Assets\PublicAssets\GoogleVR\Scripts\Video\GvrVideoPlayerTexture.cs" />
     <Compile Include="Assets\Scripts\Controllers\EnemyController.cs" />
     <Compile Include="Assets\Scripts\Controllers\EnemySpawnControl.cs" />
+    <Compile Include="Assets\Scripts\Controllers\LightController.cs" />
     <Compile Include="Assets\Scripts\Controllers\SpawnControl.cs" />
     <Compile Include="Assets\Scripts\Enum\EnemyStates.cs" />
   </ItemGroup>
