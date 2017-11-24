@@ -148,6 +148,7 @@
     <Compile Include="Assets\PublicAssets\JMO Assets\Toony Colors\Editor\TCF_MaterialInspector.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Assets\FullTiltBoogie\Helpers\readme.txt" />
     <None Include="Assets\PublicAssets\Bike\Shaders\AlphaTest_Complete.shader" />
     <None Include="Assets\PublicAssets\GoogleVR\Demos\Environment\DemoEnvUnlitGrayscale.shader" />
     <None Include="Assets\PublicAssets\GoogleVR\Demos\Shaders\GVRDemo\GVRDemoAmbientOcclusion.shader" />

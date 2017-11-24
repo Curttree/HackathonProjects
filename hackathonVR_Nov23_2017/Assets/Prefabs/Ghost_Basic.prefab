@@ -400,7 +400,7 @@ Animator:
   m_GameObject: {fileID: 1059587924753026}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: fd4b310424927a840906404a14eeb5e4, type: 3}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: d9288816670e8bb4c92ba03a2f1c170c, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
@@ -432,7 +432,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   state: 0
   movementSpeed: 1
-  health: 20
+  health: 5
+  minDistance: 2.5
+  player: {fileID: 0}
+  smoke: {fileID: 1547533600304244, guid: c1df360d36300534db36d9a8c883397c, type: 2}
+  sparks: {fileID: 1419201899581104, guid: 2a7e1e848b4b6594aa336f06eab19f7a, type: 2}
 --- !u!137 &137450856573206504
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1

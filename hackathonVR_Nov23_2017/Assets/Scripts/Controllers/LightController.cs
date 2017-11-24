@@ -11,13 +11,13 @@ public class LightController : MonoBehaviour {
     public float deteriorationPercent = 0.75f;
     public Vector3 previousPosition;
     private GameObject lightbulb;
-    private GameObject camera;
+    private GameObject cameraObj;
 
 	// Use this for initialization
 	void Start () {
-        lightbulb = GameObject.FindGameObjectWithTag("Light");
-        camera = GameObject.FindGameObjectWithTag("MainCamera");
-        previousPosition = camera.transform.forward;
+        lightbulb = GameObject.Find("Point light");
+        cameraObj = GameObject.Find("Main Camera");
+        previousPosition = cameraObj.transform.forward;
 	}
 	
 	// Update is called once per frame
@@ -31,12 +31,13 @@ public class LightController : MonoBehaviour {
     {
         power -= (power>0)?drain:0;
         power += (power<maxPower)?gain:0;
+        Debug.Log("GAIN: " + gain + " POWER: " + power);
     }
 
     void GetHeadMovement()
     {
    
-        float newGain = gainScale * Vector3.Distance(previousPosition, camera.transform.forward);
+        float newGain = gainScale * Vector3.Distance(previousPosition, cameraObj.transform.forward);
         if (newGain <= sensitivity)
         {
             gain = newGain;
@@ -46,6 +47,6 @@ public class LightController : MonoBehaviour {
             //Deteriorate the gain. Will need to implement better approach to handle non cycling head movement
             gain = gain * deteriorationPercent;
         }
-        previousPosition= camera.transform.forward;
+        previousPosition= cameraObj.transform.forward;
     }
 }

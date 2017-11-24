@@ -79,6 +79,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\EffectController.cs" />
+    <Compile Include="Assets\FullTiltBoogie\RotateFlareHolder.cs" />
     <Compile Include="Assets\PublicAssets\GoogleVR\Demos\Scripts\DemoInputManager.cs" />
     <Compile Include="Assets\PublicAssets\GoogleVR\Demos\Scripts\DemoSceneManager.cs" />
     <Compile Include="Assets\PublicAssets\GoogleVR\Demos\Scripts\GVRDemo\GVRDemoManager.cs" />
@@ -182,14 +184,18 @@
     <Compile Include="Assets\PublicAssets\GoogleVR\Scripts\Utilities\GvrUIHelpers.cs" />
     <Compile Include="Assets\PublicAssets\GoogleVR\Scripts\Utilities\GvrVRHelpers.cs" />
     <Compile Include="Assets\PublicAssets\GoogleVR\Scripts\Video\GvrVideoPlayerTexture.cs" />
+    <Compile Include="Assets\Scripts\Controllers\AltEnemyController.cs" />
     <Compile Include="Assets\Scripts\Controllers\EnemyController.cs" />
     <Compile Include="Assets\Scripts\Controllers\EnemySpawnControl.cs" />
+    <Compile Include="Assets\Scripts\Controllers\ErrorMessageScript.cs" />
     <Compile Include="Assets\Scripts\Controllers\LightController.cs" />
     <Compile Include="Assets\Scripts\Controllers\ScoreController.cs" />
     <Compile Include="Assets\Scripts\Controllers\SpawnControl.cs" />
+    <Compile Include="Assets\Scripts\Controllers\SyncController.cs" />
     <Compile Include="Assets\Scripts\Enum\EnemyStates.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Assets\FullTiltBoogie\Helpers\readme.txt" />
     <None Include="Assets\PublicAssets\Bike\Shaders\AlphaTest_Complete.shader" />
     <None Include="Assets\PublicAssets\GoogleVR\Demos\Environment\DemoEnvUnlitGrayscale.shader" />
     <None Include="Assets\PublicAssets\GoogleVR\Demos\Shaders\GVRDemo\GVRDemoAmbientOcclusion.shader" />

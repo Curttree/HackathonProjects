@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System.Collections;
 using static EnemyStates;
 
 public class EnemyController : MonoBehaviour {
@@ -11,18 +12,23 @@ public class EnemyController : MonoBehaviour {
     private ScoreController gameLogic;
     private float radius=5f;
     private float damageScale=0.1f;
+    public GameObject smoke;
+    public GameObject sparks;
+    private Animator anim;
 
     // Use this for initialization
     void Start () {
         player = GameObject.Find("Player");
         lightbulb = GameObject.Find("Point light");
         gameLogic = GameObject.Find("GameLogic").GetComponent<ScoreController>();
+        anim = GetComponentInChildren<Animator>();
         transform.LookAt(player.transform);
         transform.eulerAngles = new Vector3(0, transform.eulerAngles.y, 0);
     }
 	
 	// Update is called once per frame
 	void Update () {
+        anim.SetInteger("State", (int)state);
         DetermineState();
         DamageCalculation();
     }
@@ -61,25 +67,25 @@ public class EnemyController : MonoBehaviour {
                 gameLogic.UpdateScore(100);
             }    
             state = EnemyState.Die;
-            Debug.Log(state.ToString());
         }
         if (dist <= minDistance && state != EnemyState.Die)
         {
             state = EnemyState.Attack;
-            Debug.Log(state.ToString());
         }
     }
 
     void Kill()
     {
+        Quaternion rotation = Quaternion.Euler(transform.rotation.x - 90, transform.rotation.y, transform.position.z);
+        GameObject smokeClone = (GameObject)Instantiate(smoke, transform.position, rotation);
         Destroy(gameObject);
     }
 
     void Attack()
     {
+        GameObject sparksClone = (GameObject)Instantiate(sparks, transform.position, transform.rotation);
         gameLogic.UpdateScore(-500);
         state = EnemyState.Die;
-        Debug.Log(state.ToString());
     }
 
     float GetDistance(GameObject other)
